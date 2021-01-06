@@ -11,6 +11,11 @@ class Bird extends BaseClass {
     //this.body.position.y = mouseY;
 
     super.display();
+    if(gameState==="onSling"){
+this.trajectory=[];
+this.visibilty=255;
+Matter.Body.setAngle(this.body,0);
+    }
 
     if(this.body.velocity.x > 10 && this.body.position.x > 200){
       var position = [this.body.position.x, this.body.position.y];
@@ -19,7 +24,10 @@ class Bird extends BaseClass {
    
 
     for(var i=0; i<this.trajectory.length; i++){
+      push();
+      this.visibility=this.visibility-0.5;
       image(this.smokeImage, this.trajectory[i][0], this.trajectory[i][1]);
+      pop();
     }
   }
 }
